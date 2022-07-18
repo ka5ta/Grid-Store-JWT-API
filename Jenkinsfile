@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('print2') {
+      steps {
+        echo '\'Another new message\''
+      }
+    }
+
   }
 }
