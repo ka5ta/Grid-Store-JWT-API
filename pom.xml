@@ -14,7 +14,7 @@
 	<name>API-JWT-Store</name>
 	<description>GridU project</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
