@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('print') {
       steps {
-        echo 'Hello Team its me!'
+        sh 'echo "Hello Team its me"!'
       }
     }
 
     stage('print2') {
       steps {
-        echo '\'Another new message\''
+        sh 'echo "Another new message"'
       }
     }
 
