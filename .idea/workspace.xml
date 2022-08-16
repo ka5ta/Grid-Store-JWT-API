@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="887ef89c-e0fb-415b-a304-66c1a0c1c210" name="Changes" comment="adding cucumber to pom">
-      <change afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/CucumberIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/CucumberSpringConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/MyStepDefsForIsItFriday.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/RegisterUserStepDefs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/isItFriday.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/user.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/junit-platform.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/filters/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/filters/JwtRequestFilter.java" afterDir="false" />
+    <list default="true" id="887ef89c-e0fb-415b-a304-66c1a0c1c210" name="Changes" comment="re-naming method">
+      <change beforePath="$PROJECT_DIR$/src/test/java/bdd/cucumber/RegisterUserStepDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/RegisterUserStepDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/user.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/user.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658153708186</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="creating some bdd tests using cucumber.">
+      <created>1660660341670</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1660660341670</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -259,7 +258,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="adding dockerfile and change to POM.XML" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding dockerfile and change to POM.XML" />
+    <MESSAGE value="creating some bdd tests using cucumber." />
+    <MESSAGE value="re-naming method" />
+    <option name="LAST_COMMIT_MESSAGE" value="re-naming method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -88,29 +88,28 @@ public class RegisterUserStepDefs {
         assertEquals(expectedStatus, actualStatus);
     }
 
-    @And("Response message {string}.")
+    @And("Response message is {string}.")
     public void responseMessage(String expectedMessage) throws UnsupportedEncodingException {
         //String http response body
         String contentAsString = mvcResult.getResponse().getContentAsString();
         //Convert response to JSONObject to get a message property
         JsonObject jsonObject = new Gson().fromJson(contentAsString, JsonObject.class);
-
-        String responseMessage = getString(jsonObject);
+        String responseMessage = jsonObject.get("message").getAsString();
 
         assertEquals(expectedMessage, responseMessage);
     }
 
-    private String getString(JsonObject jsonObject) {
-        //Convert message value to String
-        String responseMessage = null;
-        //if(jsonObject.get("message") == null){
-        if(jsonObject.has("message")){
-           responseMessage = jsonObject.get("message").getAsString();
-        } else if (jsonObject.has("error")){
-            responseMessage = jsonObject.get("error").getAsString();
-        }
-        return responseMessage;
+    @And("Response error is {string}.")
+    public void responseError(String expectedMessage) throws UnsupportedEncodingException {
+        //String http response body
+        String contentAsString = mvcResult.getResponse().getContentAsString();
+        //Convert response to JSONObject to get a message property
+        JsonObject jsonObject = new Gson().fromJson(contentAsString, JsonObject.class);
+        String responseMessage = jsonObject.get("error").getAsString();
+
+        assertEquals(expectedMessage, responseMessage);
     }
+
 
 
 }
