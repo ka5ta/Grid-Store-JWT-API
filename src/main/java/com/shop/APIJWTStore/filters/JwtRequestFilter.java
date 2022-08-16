@@ -43,7 +43,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         //To skip OncePerRequestFilter for register and authenticate
-        if(shouldSkipFilter(request.getServletPath())){
+        if(shouldSkipFilter(request.getRequestURI())){
             filterChain.doFilter(request, response);
             return;
         }
@@ -94,14 +94,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    public boolean shouldSkipFilter(String servletPath){
+    public boolean shouldSkipFilter(String requestURI){
         Set<String> setOfLinksToSkip = new HashSet<>();
         setOfLinksToSkip.add("/h2-console/");
-        setOfLinksToSkip.add("/account/api/auth/register");
-        setOfLinksToSkip.add("/account/api/authenticate");
+        setOfLinksToSkip.add("/shop/api/auth/register");
+        setOfLinksToSkip.add("/shop/api/authenticate");
 
-        if(setOfLinksToSkip.contains(servletPath) ) {
-            logger.info("The endpoint: " + servletPath + " was skipped.");
+        if(setOfLinksToSkip.contains(requestURI) ) {
+            logger.info("The endpoint: " + requestURI + " was skipped.");
             return true;
         }
         return false;

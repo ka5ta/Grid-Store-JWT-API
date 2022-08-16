@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="887ef89c-e0fb-415b-a304-66c1a0c1c210" name="Changes" comment="adding dockerfile and change to POM.XML">
+    <list default="true" id="887ef89c-e0fb-415b-a304-66c1a0c1c210" name="Changes" comment="adding cucumber to pom">
+      <change afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/CucumberIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/CucumberSpringConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/MyStepDefsForIsItFriday.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/RegisterUserStepDefs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/isItFriday.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/user.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/junit-platform.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/filters/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/filters/JwtRequestFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +48,9 @@
       </list>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2Axv9gv4AerFZwVDXZjUQhqB0jB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -52,11 +63,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "/home/kasia-urbanska/Desktop/workspace/API-JWT-Store",
-    "project.structure.last.edited": "Project",
+    "last_opened_file_path": "/home/kasia-urbanska/Desktop/workspace/API-JWT-Store/src/test/java/com/shop/APIJWTStore/bdd/cucumber",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -66,28 +77,38 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/com/shop/APIJWTStore/bdd/cucumber" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/filters" />
+      <recent name="$PROJECT_DIR$/src/test/resources/bdd/cucumber" />
+      <recent name="$PROJECT_DIR$/src/test/resources/bdd.cucumber" />
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+      <recent name="$PROJECT_DIR$/src/test/resources/com.shop.APIJWTStore/bdd" />
+      <recent name="$PROJECT_DIR$/src/test/resources/com.shop.APIJWTStore" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="bdd.cucumber" />
+      <recent name="com.shop.APIJWTStore" />
+      <recent name="com.shop.APIJWTStore.bdd.cucumber" />
+      <recent name="cucumber" />
       <recent name="com.shop.APIJWTStore.controller" />
-      <recent name="com.shop.APIJWTStore.service" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.shop.APIJWTStore.controller" />
       <recent name="com.shop.APIJWTStore.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AccountControllerTest">
-    <configuration name="ApiJwtStoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CucumberIntegrationTest">
+    <configuration name="com.shop.APIJWTStore.ApiJwtStoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.ApiJwtStoreApplication" />
       <module name="API-JWT-Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shop.APIJWTStore.*" />
+          <option name="PATTERN" value="bdd.cucumber.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,82 +116,85 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: is_it_cucumber" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/cucumber/is_it_cucumber.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="API-JWT-Store" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <shortenClasspath name="NONE" />
+      <option name="SUGGESTED_NAME" value="Feature: is_it_cucumber" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shop.APIJWTStore.controller.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shop.APIJWTStore.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.controller.AccountControllerTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiJwtStoreApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="API-JWT-Store" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bdd.cucumber.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shop.APIJWTStore" />
+      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.ApiJwtStoreApplicationTests" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthenticationControllerTest$registerAuthenticationControllerTest.anonymousCanRegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CucumberIntegrationTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="API-JWT-Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shop.APIJWTStore.controller.*" />
+          <option name="PATTERN" value="com.shop.APIJWTStore.bdd.cucumber.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shop.APIJWTStore.controller.AuthenticationControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.controller.AuthenticationControllerTest$registerAuthenticationControllerTest" />
-      <option name="METHOD_NAME" value="anonymousCanRegisterTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.shop.APIJWTStore.bdd.cucumber" />
+      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.bdd.cucumber.CucumberIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthenticationControllerTest$registerAuthenticationControllerTest.emailAlreadyRegisteredThrowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CucumberIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="API-JWT-Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shop.APIJWTStore.controller.*" />
+          <option name="PATTERN" value="bdd.cucumber.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shop.APIJWTStore.controller.AuthenticationControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.controller.AuthenticationControllerTest$registerAuthenticationControllerTest" />
-      <option name="METHOD_NAME" value="emailAlreadyRegisteredThrowTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AuthenticationControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="API-JWT-Store" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.shop.APIJWTStore.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.shop.APIJWTStore.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.controller.AuthenticationControllerTest" />
+      <option name="PACKAGE_NAME" value="bdd.cucumber" />
+      <option name="MAIN_CLASS_NAME" value="bdd.cucumber.CucumberIntegrationTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ApiJwtStoreApplication" />
-      <item itemvalue="JUnit.AccountControllerTest" />
-      <item itemvalue="JUnit.AuthenticationControllerTest$registerAuthenticationControllerTest.anonymousCanRegisterTest" />
-      <item itemvalue="JUnit.AuthenticationControllerTest$registerAuthenticationControllerTest.emailAlreadyRegisteredThrowTest" />
-      <item itemvalue="JUnit.AuthenticationControllerTest" />
+      <item itemvalue="Application.com.shop.APIJWTStore.ApiJwtStoreApplication" />
+      <item itemvalue="Cucumber Java.Feature: is_it_cucumber" />
+      <item itemvalue="JUnit.CucumberIntegrationTest" />
+      <item itemvalue="JUnit.CucumberIntegrationTest (1)" />
+      <item itemvalue="JUnit.ApiJwtStoreApplicationTests" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AccountControllerTest" />
-        <item itemvalue="Application.ApiJwtStoreApplication" />
-        <item itemvalue="JUnit.AuthenticationControllerTest" />
-        <item itemvalue="JUnit.AuthenticationControllerTest$registerAuthenticationControllerTest.emailAlreadyRegisteredThrowTest" />
-        <item itemvalue="JUnit.AuthenticationControllerTest$registerAuthenticationControllerTest.anonymousCanRegisterTest" />
+        <item itemvalue="JUnit.CucumberIntegrationTest" />
+        <item itemvalue="Application.com.shop.APIJWTStore.ApiJwtStoreApplication" />
+        <item itemvalue="JUnit.CucumberIntegrationTest (1)" />
+        <item itemvalue="JUnit.ApiJwtStoreApplicationTests" />
+        <item itemvalue="Cucumber Java.Feature: is_it_cucumber" />
       </list>
     </recent_temporary>
   </component>
@@ -250,11 +274,6 @@
           <line>49</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/controller/AuthenticationController.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -262,5 +281,10 @@
         <PinnedItemInfo parentTag="org.springframework.security.web.firewall.StrictHttpFirewall$StrictFirewalledRequest" memberName="request" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/API_JWT_Store$Feature__is_it_cucumber.ic" NAME="Feature: is_it_cucumber Coverage Results" MODIFIED="1660142380476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>io.cucumber.core.cli.*</FILTER>
+    </SUITE>
   </component>
 </project>
