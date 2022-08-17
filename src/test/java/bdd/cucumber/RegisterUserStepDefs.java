@@ -97,6 +97,7 @@ public class RegisterUserStepDefs {
         String responseMessage = jsonObject.get("message").getAsString();
 
         assertEquals(expectedMessage, responseMessage);
+        //assertEquals(expectedMessage, "Success !!!");
     }
 
     @And("Response error is {string}.")
@@ -108,6 +109,7 @@ public class RegisterUserStepDefs {
         String responseMessage = jsonObject.get("error").getAsString();
 
         assertEquals(expectedMessage, responseMessage);
+        //assertEquals(expectedMessage, "Account exists");
     }
 
 
