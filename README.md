@@ -35,8 +35,8 @@ Your store has to support following methods:
 :heavy_check_mark:  Your app must not store password as plain text, use some good approach to identify user. </br>
 :heavy_check_mark:  Login into system. Example request: {“email”:”my@email.com”, “password”:”123”} </br>
 :heavy_check_mark:  Respond with JSON containing sessionId. </br>
-*(optional) Think about preventing an intruder from bruteforcing. 
-:heavy_check_mark:  (optional) Reset password.
+*(optional) Think about preventing an intruder from bruteforcing. </br>
+:heavy_check_mark:  (optional) Reset password.</br>
 - Get all products in store.
 - Respond with JSON list of items you have, e.g.: 
 {“id”:”2411”, “title”:”Nail gun”, “available”:8, “price”: “23.95”} 
