@@ -1,19 +1,19 @@
-package com.shop.APIJWTStore.model;
+package com.shop.apistore.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.shop.APIJWTStore.constraint.Role;
+import com.shop.apistore.constraint.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@AllArgsConstructor
 @Data
-@Table(name="accounts")
+@Table(name = "accounts")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Account {
 
     @Id
@@ -25,26 +25,23 @@ public class Account {
 
     private String password;
 
-    @ElementCollection(targetClass= Role.class, fetch = FetchType.EAGER)
-    private Set<Role> roles;
-
-    public Account() {
-        this.roles = new HashSet<>();
-        roles.add(Role.USER);
-    }
+    private Role role;
 
     public Account(String email, String password) {
-        this();
         this.email = email;
         this.password = password;
+        this.role = Role.USER;
     }
 
-    public Account(String email, String password, Set<Role> roles) {
+    public Account(String email, String password, String role) {
         this.email = email;
         this.password = password;
-        this.roles = roles;
+        if (role.equals("ADMIN")) {
+            setRole(role);
+        } else {
+            setRole("USER");
+        }
     }
-
 
     @JsonIgnore
     public String getPassword() {
@@ -56,11 +53,7 @@ public class Account {
         this.password = password;
     }
 
-    public void setRole(String role){
-        Role newRole = Role.valueOf(role);
-        if(!this.roles.contains(newRole)){
-            this.roles.add(newRole);
-        }
+    private void setRole(String role) {
+        this.role = Role.valueOf(role);
     }
-
 }

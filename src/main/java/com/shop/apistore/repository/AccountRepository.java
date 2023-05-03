@@ -1,6 +1,6 @@
-package com.shop.APIJWTStore.repository;
+package com.shop.apistore.repository;
 
-import com.shop.APIJWTStore.model.Account;
+import com.shop.apistore.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

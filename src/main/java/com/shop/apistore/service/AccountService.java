@@ -1,23 +1,22 @@
-package com.shop.APIJWTStore.service;
+package com.shop.apistore.service;
 
-import com.shop.APIJWTStore.dto.ChangePasswordDTO;
-import com.shop.APIJWTStore.dto.SuccessResponseDTO;
-import com.shop.APIJWTStore.model.Account;
-import com.shop.APIJWTStore.repository.AccountRepository;
+import com.shop.apistore.dto.ChangePasswordDTO;
+import com.shop.apistore.model.Account;
+import com.shop.apistore.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.security.auth.login.AccountException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -34,6 +33,7 @@ public class AccountService {
             throw new AccountException("Account already exists.");
         }
 
+        setEncodedPassword(account);
         return repository.save(account);
     }
 
@@ -43,9 +43,7 @@ public class AccountService {
         if (byEmailIgnoreCase.isPresent()) {
             return byEmailIgnoreCase.get();
         }
-
         throw new UsernameNotFoundException("User not found with email: " + email);
-
     }
 
     public List<Account> getAllAccounts() {
@@ -54,31 +52,27 @@ public class AccountService {
 
     public void changePassword(ChangePasswordDTO changePasswordDTO, Principal principal) throws AccountException {
         String oldPassword = changePasswordDTO.getOldPassword();
-        log.info("old Password: " + oldPassword);
         String newPassword = changePasswordDTO.getNewPassword();
         String email = principal.getName();
 
         Account account = findByEmailOrThrow(email);
-        if(passwordEncoder.matches(oldPassword, account.getPassword())){
+        if (passwordEncoder.matches(oldPassword, account.getPassword())) {
             account.setPassword(passwordEncoder.encode(newPassword));
             repository.save(account);
-            log.info("New Password: " + newPassword);
+            log.info("New Password created");
         } else {
             throw new AccountException("Old password doesn't match. Password was not changed.");
         }
-
     }
 
-    public Account buildAccount(String email, String password, String role) {
-
-        Account account = new Account();
-        account.setEmail(email);
-        account.setPassword(passwordEncoder.encode(password));
-
-        if(role.equals("ADMIN")){
-            account.setRole(role);
+    public boolean comparePasswords(String requestPassword, String encodedPassword) {
+        if (!passwordEncoder.matches(requestPassword, encodedPassword)) {
+            throw new BadCredentialsException("Password is wrong");
         }
+        return true;
+    }
 
-        return account;
+    private void setEncodedPassword(Account account) {
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
     }
 }
