@@ -34,7 +34,6 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-;
 
 //todo why those annotations are working but not @AutoConfigureMockMvc and @WebMvcTest() ?
 

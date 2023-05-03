@@ -4,7 +4,6 @@ import com.shop.apistore.dto.ChangePasswordDTO;
 import com.shop.apistore.model.Account;
 import com.shop.apistore.repository.AccountRepository;
 import lombok.AllArgsConstructor;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.security.auth.login.AccountException;
 import java.security.Principal;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j

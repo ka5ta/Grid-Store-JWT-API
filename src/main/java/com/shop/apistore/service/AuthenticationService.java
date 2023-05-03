@@ -1,7 +1,6 @@
 package com.shop.apistore.service;
 
 import com.shop.apistore.dto.JwtAuthRequest;
-import com.shop.apistore.model.Account;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
@@ -10,10 +9,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.security.auth.login.AccountException;
-import javax.security.auth.login.AccountExpiredException;
-import java.util.List;
 
 @RestController
 @AllArgsConstructor

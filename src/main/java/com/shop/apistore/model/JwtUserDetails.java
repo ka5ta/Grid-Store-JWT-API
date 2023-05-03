@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public class JwtUserDetails implements UserDetails {
 
-    private Account account;
+    private final Account account;
 
     public JwtUserDetails(Account account) {
         this.account = account;

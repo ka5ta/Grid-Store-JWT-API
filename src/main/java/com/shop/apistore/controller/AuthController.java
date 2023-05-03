@@ -2,7 +2,6 @@ package com.shop.apistore.controller;
 
 import com.shop.apistore.dto.*;
 import com.shop.apistore.model.Account;
-import com.shop.apistore.service.AccountService;
 import com.shop.apistore.service.JwtUserDetailsService;
 import com.shop.apistore.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;

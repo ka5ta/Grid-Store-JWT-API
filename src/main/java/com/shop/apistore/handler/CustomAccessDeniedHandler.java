@@ -14,7 +14,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response,
-            AccessDeniedException accessDeniedException) throws IOException, ServletException {
+            AccessDeniedException accessDeniedException) throws IOException {
 
         String message = "Access Denied. You are not authorized to see content.";
         JsonErrorResponseHandler.jsonErrorResponseIssuer(response, message, HttpServletResponse.SC_FORBIDDEN);

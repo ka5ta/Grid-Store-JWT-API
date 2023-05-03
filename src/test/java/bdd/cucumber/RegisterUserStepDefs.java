@@ -1,6 +1,7 @@
 package bdd.cucumber;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.shop.apistore.constraint.Role;
 import com.shop.apistore.dto.RegisterAccountDTO;
 import com.shop.apistore.model.Account;
@@ -16,14 +17,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import javax.security.auth.login.AccountException;
 import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 

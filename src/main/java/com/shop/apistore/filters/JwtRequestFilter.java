@@ -48,8 +48,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             return;
         }
 
-        String email = null;
-        String jwtToken = null;
+        String email;
+        String jwtToken;
 
         try {
             // get token from header
