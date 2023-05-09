@@ -2,21 +2,30 @@
 Simple app store with Spring Security, JWT tokens and unit testing.
 
 ## Technologies
-* Spring Boot
+* Spring Boot & Security
 * H2 database
 * JUnit 5
 * Cucumber
-* Jacoco
+* Jwt token generator
 
 ## Endpoints
 1. [Register](http://localhost:8080/shop/api/auth/register)
-2. [Signin](http://localhost:8080/shop/api/authenticate)
-3. [Basket](http://localhost:8080/shop/api/auth/all)
-4. [Change Password](http://localhost:8080/shop/api/auth/change-password")
-5. [Get all users](http://localhost:8080/shop/api/auth/all) -admin only
+2. [Signin](http://localhost:8080/shop/api/auth)
+3. [Basket](http://localhost:8080/shop/api/basket/)
+4. [All Baskets](http://localhost:8080/shop/api/basket/all) -admin only
+5. [Create order from basket](http://localhost:8080/shop/api/order/checkout)
+6. [Change Password](http://localhost:8080/shop/api/auth/change-password")
+7. [Get all users](http://localhost:8080/shop/api/auth/all) -admin only
+8. [Get all products available](http://localhost:8080/shop/api/products)
+9. [Change password](http://localhost:8080/shop/api/account/change-password)
+
+Basket actions:
+[add product to basket](http://localhost:8080/shop/api/basket/add?productId=3) where product-id = 3
+[remove product from basket](http://localhost:8080/shop/api/basket/remove?productId=3) where product-id = 3
+[modify basket](http://localhost:8080/shop/api/basket/modify?productId=3&quantity=0) where product-id = 3 & new-quantity = 0
 
 ## Instructions
-Just run the project and navigate to 'http://localhost:8080/shop/api/auth/register'. Create Orders. Enjoy.
+Just run the project and navigate to 'http://localhost:8080/shop/api/auth/register'. Register new user. Create Orders. Enjoy.
 
 ## Database
 h2 db. To login to database: http://localhost:8080/h2-console/
