@@ -19,10 +19,10 @@ Simple app store with Spring Security, JWT tokens and unit testing.
 8. [Get all products available](http://localhost:8080/shop/api/products)
 9. [Change password](http://localhost:8080/shop/api/account/change-password)
 
-Basket actions:
-[add product to basket](http://localhost:8080/shop/api/basket/add?productId=3) where product-id = 3
-[remove product from basket](http://localhost:8080/shop/api/basket/remove?productId=3) where product-id = 3
-[modify basket](http://localhost:8080/shop/api/basket/modify?productId=3&quantity=0) where product-id = 3 & new-quantity = 0
+Basket actions:</br>
+[add product to basket](http://localhost:8080/shop/api/basket/add?productId=3) where product-id = 3</br>
+[remove product from basket](http://localhost:8080/shop/api/basket/remove?productId=3) where product-id = 3</br>
+[modify basket](http://localhost:8080/shop/api/basket/modify?productId=3&quantity=0) where product-id = 3 & new-quantity = 0</br>
 
 ## Instructions
 Just run the project and navigate to 'http://localhost:8080/shop/api/auth/register'. Register new user. Create Orders. Enjoy.
@@ -46,16 +46,16 @@ Your store has to support following methods:
 :heavy_check_mark:  Respond with JSON containing sessionId. </br>
 *(optional) Think about preventing an intruder from bruteforcing. </br>
 :heavy_check_mark:  (optional) Reset password.</br>
-- Get all products in store.
-- Respond with JSON list of items you have, e.g.: 
-{“id”:”2411”, “title”:”Nail gun”, “available”:8, “price”: “23.95”} 
-- Add item to basketDTO. Example request: {“id”:”363”, “quantity”:”2”}
-- Allow adding only one position at a time. If you don’t have this quantity in store - respond with an error. The information has to be session-scoped: once session expires - user will get new empty basketDTO.
-- Display your basketDTO content.
-- Respond with list of product names with their quantities added. Calculate subtotal. Assign an ordinal to each basketDTO item. 
-- Remove an item from user’s basketDTO.
-- Modify basketDTO item. Example request: {“id”:2, quantity: 3} - user should be able to modify number of some items in his basketDTO.
-Checkout: verify your prices in basketDTO, ensure you still have desired amount of goods. If all is good - send a user confirmation about successful order. 
-*(optional) Cancel order: return all products from order back to available status. 
-*(optional) Get user’s order list. Should contain order id, date, total, status.
+:heavy_check_mark:  Get all products in store.</br>
+:heavy_check_mark:  Respond with JSON list of items you have, e.g.: </br>
+{“id”:”2411”, “title”:”Nail gun”, “available”:8, “price”: “23.95”} </br>
+:heavy_check_mark:  Add item to basketDTO. Example request: {“id”:”363”, “quantity”:”2”}</br>
+:heavy_check_mark: Allow adding only one position at a time. If you don’t have this quantity in store - respond with an error. The information has to be session-scoped: once session expires - user will get new empty basketDTO.</br>
+:heavy_check_mark: Display your basketDTO content.</br>
+:heavy_check_mark: Respond with list of product names with their quantities added. Calculate subtotal. Assign an ordinal to each basketDTO item. </br>
+:heavy_check_mark: Remove an item from user’s basketDTO.</br>
+:heavy_check_mark: Modify basketDTO item. Example request: {“id”:2, quantity: 3} - user should be able to modify number of some items in his basketDTO.</br>
+:heavy_check_mark: Checkout: verify your prices in basketDTO, ensure you still have desired amount of goods. If all is good - send a user confirmation about successful order. </br>
+*(optional) Cancel order: return all products from order back to available status. </br>
+:heavy_check_mark: *(optional) Get user’s order list. Should contain order id, date, total, status.</br>
 
