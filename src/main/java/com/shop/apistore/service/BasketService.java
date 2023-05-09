@@ -92,7 +92,9 @@ public class BasketService {
         Basket basket = getBasket(email);
         Product product = productService.getProductById(productId);
 
-        return updateProductQuantityInBasket(basket, product, newQuantity);
+        Basket updatedBasket = updateProductQuantityInBasket(basket, product, newQuantity);
+
+        return saveBasket(updatedBasket);
     }
 
     public Basket saveBasket(Basket basket) {
