@@ -187,16 +187,16 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>${pitest}</version>
-                    <executions>
+<!--                    <executions>
                         <execution>
                             <id>pit-report</id>
-                            <!-- optional, this example attached the goal into mvn test phase -->
+                            &lt;!&ndash; optional, this example attached the goal into mvn test phase &ndash;&gt;
                             <phase>test</phase>
                             <goals>
                                 <goal>mutationCoverage</goal>
                             </goals>
                         </execution>
-                    </executions>
+                    </executions>-->
                 <dependencies>
                     <dependency>
                         <groupId>org.pitest</groupId>
@@ -241,9 +241,9 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -266,7 +266,15 @@
                         <!-- optional, this example attached the goal into mvn test phase -->
                         <phase>test</phase>
                         <goals>
-                            <goal>report-only</goal>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>surefire-report-site</id>
+                        <!-- optional, this example attached the goal into mvn site phase -->
+                        <phase>site</phase>
+                        <goals>
+                            <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -283,7 +291,7 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>LATEST</version>
+                <version>${pitest}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
