@@ -29,23 +29,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @Slf4j
 public class RegisterUserStepDefs {
 
-    private static final String PUBLIC_REGISTER_LINK = "/shop/api/auth/register";
-    static String registerDetailsForNewUserJson;
-    MvcResult mvcResult;
-    private static RegisterAccountDTO USER_REGISTER_ACCOUNT_DTO;
-    private static Account accountMock;
-
     @Autowired
     private MockMvc mockMvc;
-
     @Autowired
     AccountRepository accountRepositoryMock;
+
+    private MvcResult mvcResult;
+    private static final String PUBLIC_REGISTER_LINK = "/shop/api/auth/register";
+    private static String registerDetailsForNewUserJson;
+    private static Account accountMock;
+
+    private static final Gson gson;
+
+    static {
+        gson = new Gson();
+    }
+
 
     @Before
     public static void setUp() {
         // Json String to send post request
-        USER_REGISTER_ACCOUNT_DTO = new RegisterAccountDTO("example@gmail.com", "pass", Role.USER.name());
-        registerDetailsForNewUserJson = new Gson().toJson(USER_REGISTER_ACCOUNT_DTO);
+        RegisterAccountDTO USER_REGISTER_ACCOUNT_DTO = new RegisterAccountDTO("example@gmail.com", "pass", Role.USER.name());
+        registerDetailsForNewUserJson = gson.toJson(USER_REGISTER_ACCOUNT_DTO);
 
         // Mock account from DTO
         accountMock = new Account(USER_REGISTER_ACCOUNT_DTO.getEmail(), USER_REGISTER_ACCOUNT_DTO.getPassword());
@@ -65,8 +70,13 @@ public class RegisterUserStepDefs {
 
     @When("I sign up with email and password")
     public void iSignUpWithEmailAndPassword() throws Exception {
-        mvcResult = mockMvc.perform(post(PUBLIC_REGISTER_LINK).content(registerDetailsForNewUserJson)
-                .characterEncoding("utf-8").contentType(MediaType.APPLICATION_JSON)).andDo(print()).andReturn();
+        mvcResult = mockMvc
+                .perform(post(PUBLIC_REGISTER_LINK)
+                        .content(registerDetailsForNewUserJson)
+                .characterEncoding("utf-8")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andReturn();
     }
 
     @Then("I should receive {int} status")
@@ -80,7 +90,7 @@ public class RegisterUserStepDefs {
         // String http response body
         String contentAsString = mvcResult.getResponse().getContentAsString();
         // Convert response to JSONObject to get a message property
-        JsonObject jsonObject = new Gson().fromJson(contentAsString, JsonObject.class);
+        JsonObject jsonObject = gson.fromJson(contentAsString, JsonObject.class);
         String responseMessage = jsonObject.get("message").getAsString();
 
         assertEquals(expectedMessage, responseMessage);
@@ -92,11 +102,10 @@ public class RegisterUserStepDefs {
         // String http response body
         String contentAsString = mvcResult.getResponse().getContentAsString();
         // Convert response to JSONObject to get a message property
-        JsonObject jsonObject = new Gson().fromJson(contentAsString, JsonObject.class);
+        JsonObject jsonObject = gson.fromJson(contentAsString, JsonObject.class);
         String responseMessage = jsonObject.get("error").getAsString();
 
         assertEquals(expectedMessage, responseMessage);
-        // assertEquals(expectedMessage, "Account exists");
     }
 
 }

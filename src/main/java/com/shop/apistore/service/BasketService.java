@@ -38,7 +38,7 @@ public class BasketService {
         }
     }
 
-    public Basket addProduct(Basket basket, Product product) throws InsufficientResourcesException {
+    private Basket addProduct(Basket basket, Product product) throws InsufficientResourcesException {
 
         try {
             return updateProductQuantityInBasket(basket, product);
@@ -61,7 +61,6 @@ public class BasketService {
         int updatedQuantity = productInBasketToUpdate.getQuantityInBasket() + 1;
         // update quantity in basket
         productInBasketToUpdate.setQuantityInBasket(updatedQuantity);
-        basket.getProductsInBasket().add(productInBasketToUpdate);
         return basket;
     }
 
@@ -83,7 +82,7 @@ public class BasketService {
         return saveBasket(basket);
     }
 
-    public void removeProduct(Basket basket, Product product) {
+    private void removeProduct(Basket basket, Product product) {
         ProductInBasket productInBasketToRemove = findProductInBasket(basket, product);
 
         basket.getProductsInBasket().remove(productInBasketToRemove);
@@ -93,15 +92,14 @@ public class BasketService {
         Basket basket = getBasket(email);
         Product product = productService.getProductById(productId);
 
-        updateProductQuantityInBasket(basket, product, newQuantity);
-        return saveBasket(basket);
+        return updateProductQuantityInBasket(basket, product, newQuantity);
     }
 
     public Basket saveBasket(Basket basket) {
         return basketRepository.save(basket);
     }
 
-    public Basket updateProductQuantityInBasket(Basket basket, Product product, int newQuantity) throws InsufficientResourcesException {
+    private Basket updateProductQuantityInBasket(Basket basket, Product product, int newQuantity) throws InsufficientResourcesException {
 
         ProductInBasket productInBasketToUpdate = findProductInBasket(basket, product);
 
@@ -113,7 +111,6 @@ public class BasketService {
         }
 
         productInBasketToUpdate.setQuantityInBasket(newQuantity);
-        basket.getProductsInBasket().add(productInBasketToUpdate);
 
         return basket;
     }

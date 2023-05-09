@@ -1,22 +1,20 @@
 package com.shop.apistore.service;
 
+import com.shop.apistore.config.CustomPasswordEncoderConfig;
 import com.shop.apistore.constraint.Role;
 import com.shop.apistore.model.Account;
 import com.shop.apistore.repository.AccountRepository;
 import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.security.auth.login.AccountException;
-
 import java.util.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -24,14 +22,14 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 @DisplayName("Account Service Functionalities testing")
 class AccountServiceTest {
 
     @Mock
     private AccountRepository repositoryMock;
     @Mock
-    private PasswordEncoder passwordEncoderMock;
+    private CustomPasswordEncoderConfig encoderConfig;
 
     AccountService accountService;
 
@@ -42,7 +40,7 @@ class AccountServiceTest {
 
     @BeforeEach
     void setup() {
-        accountService = new AccountService(repositoryMock, passwordEncoderMock);
+        accountService = new AccountService(repositoryMock, encoderConfig);
     }
 
     @Nested
@@ -54,6 +52,7 @@ class AccountServiceTest {
         void savingAccountToRepositoryTest_Success() throws AccountException {
 
             // given
+
             when(repositoryMock.save(RECORD_UNSAVED)).thenReturn(RECORD_SAVED);
 
             // when

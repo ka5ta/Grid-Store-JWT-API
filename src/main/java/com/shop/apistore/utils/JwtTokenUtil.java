@@ -1,11 +1,13 @@
 package com.shop.apistore.utils;
 
+import com.shop.apistore.config.props.JwtProps;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -13,30 +15,26 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import javax.servlet.http.HttpServletRequest;
-
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
 import java.util.function.Function;
-
-import org.springframework.http.HttpHeaders;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class JwtTokenUtil implements Serializable {
 
+
+    private final transient JwtProps jwtProps;
     @Serial
     private static final long serialVersionUID = 1234567L;
     // 5 minutes
     public static final long JWT_TOKEN_VALIDITY_TIME = 5 * 60 * 1000L;
-
-    @Value("${jwt.secret}")
-    private String keyString;
-
     private static final String PREFIX = "Bearer ";
 
     private SecretKey getSecretKey() {
-        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(keyString));
+        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtProps.getSecret()));
     }
 
     // generate token for authenticated user

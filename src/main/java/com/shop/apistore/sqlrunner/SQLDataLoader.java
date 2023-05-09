@@ -1,4 +1,4 @@
-package com.shop.apistore.config;
+package com.shop.apistore.sqlrunner;
 
 import com.shop.apistore.model.Account;
 import com.shop.apistore.model.Basket;
@@ -10,13 +10,13 @@ import com.shop.apistore.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Configuration
+@Component
 @RequiredArgsConstructor
 public class SQLDataLoader implements ApplicationRunner {
 

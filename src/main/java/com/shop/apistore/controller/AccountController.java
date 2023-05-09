@@ -25,6 +25,7 @@ public class AccountController {
 
     @Secured("ROLE_ADMIN")
     @GetMapping("all")
+    @ResponseBody
     public ResponseEntity<List<Account>> getAllAccounts() {
         List<Account> allAccounts = accountService.getAllAccounts();
 

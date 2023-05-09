@@ -1,27 +1,30 @@
 package com.shop.apistore.service;
 
+import com.shop.apistore.config.CustomPasswordEncoderConfig;
 import com.shop.apistore.dto.ChangePasswordDTO;
 import com.shop.apistore.model.Account;
 import com.shop.apistore.repository.AccountRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.security.auth.login.AccountException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountService {
 
     private final AccountRepository repository;
-    private final PasswordEncoder passwordEncoder;
+
+    private final CustomPasswordEncoderConfig encoderConfig;
+
 
     public Account save(Account account) throws AccountException {
 
@@ -31,7 +34,9 @@ public class AccountService {
             throw new AccountException("Account already exists.");
         }
 
-        setEncodedPassword(account);
+        String password = encoderConfig.encodePassword(account.getPassword());
+        account.setPassword(password);
+
         return repository.save(account);
     }
 
@@ -45,7 +50,12 @@ public class AccountService {
     }
 
     public List<Account> getAllAccounts() {
-        return repository.findAll();
+        List<Account> allAccounts = new ArrayList<>();
+
+        Iterable<Account> allAccountsIterable = repository.findAll();
+        allAccountsIterable.forEach(allAccounts::add);
+
+        return allAccounts;
     }
 
     public void changePassword(ChangePasswordDTO changePasswordDTO, Principal principal) throws AccountException {
@@ -54,8 +64,8 @@ public class AccountService {
         String email = principal.getName();
 
         Account account = findByEmailOrThrow(email);
-        if (passwordEncoder.matches(oldPassword, account.getPassword())) {
-            account.setPassword(passwordEncoder.encode(newPassword));
+        if (comparePasswords(oldPassword, account.getPassword())) {
+            account.setPassword(encoderConfig.encodePassword(newPassword));
             repository.save(account);
             log.info("New Password created");
         } else {
@@ -64,13 +74,9 @@ public class AccountService {
     }
 
     public boolean comparePasswords(String requestPassword, String encodedPassword) {
-        if (!passwordEncoder.matches(requestPassword, encodedPassword)) {
+        if (!encoderConfig.comparePasswords(requestPassword, encodedPassword)) {
             throw new BadCredentialsException("Password is wrong");
         }
         return true;
-    }
-
-    private void setEncodedPassword(Account account) {
-        account.setPassword(passwordEncoder.encode(account.getPassword()));
     }
 }
