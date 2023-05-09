@@ -260,6 +260,7 @@ class BasketServiceTest {
 
             // given
             when(productServiceMock.getProductById(1L)).thenReturn(nailgun);
+            when(basketRepositoryMock.save(any())).thenReturn(basket);
 
             // when
             Basket updatedBasket = basketService.modifyProductInBasket(1L, 0, email);
@@ -280,6 +281,7 @@ class BasketServiceTest {
 
             // given
             when(productServiceMock.getProductById(2L)).thenReturn(rocket);
+            when(basketRepositoryMock.save(any())).thenReturn(basket);
 
             // when
             Basket updatedBasket = basketService.modifyProductInBasket(2L, 10, email);
