@@ -4,11 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="887ef89c-e0fb-415b-a304-66c1a0c1c210" name="Changes" comment="refactor definition steps">
+    <list default="true" id="887ef89c-e0fb-415b-a304-66c1a0c1c210" name="Changes" comment="changes after review">
+      <change afterPath="$PROJECT_DIR$/Project_Requirements.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/config/SQLDataLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/controller/BasketController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/BasketDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/BasketProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/RegisterAccountDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/RegisterResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/mapper/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/model/Basket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/model/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/model/ProductInBasket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/repository/BasketRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/repository/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/repository/ProductInBasketRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/service/BasketService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/utils/CustomComparatorProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/shop/apistore/service/AuthenticationServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/shop/apistore/service/BasketServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/bdd/cucumber/MyStepDefsForIsItFriday.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/MyStepDefsForIsItFriday.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/ApiJwtStoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/ApiJwtStoreApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/Requirements.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/constraint/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/constraint/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/controller/AuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/dto/ChangePasswordDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/ChangePasswordDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/dto/ErrorResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/dto/JwtAuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/JwtAuthRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/dto/JwtAuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/JwtAuthResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/dto/RegisterAccountDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/dto/RegisterResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/dto/SuccessResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/dto/SuccessResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/failureHandler/CustomAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/handler/CustomAccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/failureHandler/InstantAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/handler/InstantAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/failureHandler/JsonErrorResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/handler/JsonErrorResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/filters/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/filters/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/model/Basket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/model/JwtUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/model/JwtUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/service/JwtUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/service/JwtUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/utils/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/utils/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/utils/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/utils/JwtTokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/apistore/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/apistore/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/bdd/cucumber/CucumberIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/CucumberIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/bdd/cucumber/CucumberSpringConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/CucumberSpringConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/bdd/cucumber/MyStepDefsForIsItFriday.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/bdd/cucumber/RegisterUserStepDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/bdd/cucumber/RegisterUserStepDefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/user.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/user.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/shop/APIJWTStore/ApiJwtStoreApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/shop/apistore/ApiJwtStoreApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/shop/APIJWTStore/controller/AuthenticationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/shop/apistore/controller/AuthControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/bdd/cucumber/isItFriday.feature" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +74,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Enum" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
@@ -36,11 +94,6 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
-    <option name="enabledProfiles">
-      <list>
-        <option value="coverage" />
-      </list>
-    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -51,25 +104,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/kasia-urbanska/Desktop/workspace/API-JWT-Store/src/test/java/com/shop/APIJWTStore/bdd/cucumber&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "/home/kasia-urbanska/Desktop/workspace/node-consumer",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Markdown&quot;,
-      &quot;JSON&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Markdown",
+      "JSON"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/test/java/com/shop/APIJWTStore/bdd/cucumber" />
@@ -78,31 +132,32 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/test/resources/bdd/cucumber" />
       <recent name="$PROJECT_DIR$/src/test/resources/bdd.cucumber" />
       <recent name="$PROJECT_DIR$/src/test/resources" />
       <recent name="$PROJECT_DIR$/src/test/resources/com.shop.APIJWTStore/bdd" />
-      <recent name="$PROJECT_DIR$/src/test/resources/com.shop.APIJWTStore" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.shop.APIJWTStore.service" />
       <recent name="bdd.cucumber" />
       <recent name="com.shop.APIJWTStore" />
       <recent name="com.shop.APIJWTStore.bdd.cucumber" />
       <recent name="cucumber" />
-      <recent name="com.shop.APIJWTStore.controller" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.shop.apistore.service" />
       <recent name="com.shop.APIJWTStore.controller" />
       <recent name="com.shop.APIJWTStore.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CucumberIntegrationTest">
-    <configuration name="com.shop.APIJWTStore.ApiJwtStoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.ApiJwtStoreApplication" />
+  <component name="RunManager" selected="Application.ApiJwtStoreApplication">
+    <configuration name="ApiJwtStoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.shop.apistore.ApiJwtStoreApplication" />
       <module name="API-JWT-Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bdd.cucumber.*" />
+          <option name="PATTERN" value="com.shop.apistore.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,85 +165,83 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature: is_it_cucumber" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/cucumber/is_it_cucumber.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+    <configuration name="AuthControllerTest$generateTokenAuthenticationTest.anonymousNotAllowedToGetTokenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="API-JWT-Store" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Feature: is_it_cucumber" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="PATTERN" value="com.shop.apistore.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.shop.apistore.controller.AuthControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.shop.apistore.controller.AuthControllerTest$generateTokenAuthenticationTest" />
+      <option name="METHOD_NAME" value="anonymousNotAllowedToGetTokenTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApiJwtStoreApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="API-JWT-Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bdd.cucumber.*" />
+          <option name="PATTERN" value="com.shop.apistore.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shop.APIJWTStore" />
-      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.ApiJwtStoreApplicationTests" />
-      <option name="METHOD_NAME" value="" />
+      <option name="PACKAGE_NAME" value="com.shop.apistore.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.shop.apistore.controller.AuthControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CucumberIntegrationTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BasketServiceTest.addProductToBasket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="API-JWT-Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shop.APIJWTStore.bdd.cucumber.*" />
+          <option name="PATTERN" value="com.shop.apistore.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shop.APIJWTStore.bdd.cucumber" />
-      <option name="MAIN_CLASS_NAME" value="com.shop.APIJWTStore.bdd.cucumber.CucumberIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.shop.apistore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.shop.apistore.service.BasketServiceTest" />
+      <option name="METHOD_NAME" value="addProductToBasket" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CucumberIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BasketServiceTest.getAllProductsFromBasket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="API-JWT-Store" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bdd.cucumber.*" />
+          <option name="PATTERN" value="com.shop.apistore.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="bdd.cucumber" />
-      <option name="MAIN_CLASS_NAME" value="bdd.cucumber.CucumberIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.shop.apistore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.shop.apistore.service.BasketServiceTest" />
+      <option name="METHOD_NAME" value="getAllProductsFromBasket" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.com.shop.APIJWTStore.ApiJwtStoreApplication" />
-      <item itemvalue="Cucumber Java.Feature: is_it_cucumber" />
-      <item itemvalue="JUnit.CucumberIntegrationTest" />
-      <item itemvalue="JUnit.CucumberIntegrationTest (1)" />
-      <item itemvalue="JUnit.ApiJwtStoreApplicationTests" />
+      <item itemvalue="Application.ApiJwtStoreApplication" />
+      <item itemvalue="JUnit.AuthControllerTest" />
+      <item itemvalue="JUnit.AuthControllerTest$generateTokenAuthenticationTest.anonymousNotAllowedToGetTokenTest" />
+      <item itemvalue="JUnit.BasketServiceTest.addProductToBasket" />
+      <item itemvalue="JUnit.BasketServiceTest.getAllProductsFromBasket" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CucumberIntegrationTest" />
-        <item itemvalue="Application.com.shop.APIJWTStore.ApiJwtStoreApplication" />
-        <item itemvalue="JUnit.CucumberIntegrationTest (1)" />
-        <item itemvalue="JUnit.ApiJwtStoreApplicationTests" />
-        <item itemvalue="Cucumber Java.Feature: is_it_cucumber" />
+        <item itemvalue="Application.ApiJwtStoreApplication" />
+        <item itemvalue="JUnit.AuthControllerTest" />
+        <item itemvalue="JUnit.AuthControllerTest$generateTokenAuthenticationTest.anonymousNotAllowedToGetTokenTest" />
+        <item itemvalue="JUnit.BasketServiceTest.addProductToBasket" />
+        <item itemvalue="JUnit.BasketServiceTest.getAllProductsFromBasket" />
       </list>
     </recent_temporary>
   </component>
@@ -250,7 +303,21 @@
       <option name="project" value="LOCAL" />
       <updated>1660660965765</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="adding 'RULE'  Gherkin keyword and test cucumber integration, result with success">
+      <created>1660733015941</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1660733015941</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added account model controller repo and service">
+      <created>1683137054825</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683137054825</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -270,20 +337,28 @@
     <MESSAGE value="creating some bdd tests using cucumber." />
     <MESSAGE value="re-naming method" />
     <MESSAGE value="refactor definition steps" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor definition steps" />
+    <MESSAGE value="adding 'RULE'  Gherkin keyword and test cucumber integration, result with success" />
+    <MESSAGE value="added account model controller repo and service" />
+    <MESSAGE value="changes after review" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes after review" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/service/AccountService.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="57" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/shop/apistore/service/ProductService.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/shop/APIJWTStore/controller/AccountController.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="62" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/shop/apistore/controller/AuthController.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/shop/apistore/service/BasketService.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
