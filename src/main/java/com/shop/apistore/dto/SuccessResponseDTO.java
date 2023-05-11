@@ -1,23 +1,14 @@
 package com.shop.apistore.dto;
 
-import java.io.Serial;
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-public class SuccessResponseDTO implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+@Getter
+@Setter
+@AllArgsConstructor
+public class SuccessResponseDTO {
 
     private String message;
 
-    public SuccessResponseDTO(String message) {
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

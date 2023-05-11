@@ -30,7 +30,14 @@ public class AuthController {
         try {
 
             Account savedAccount = jwtUserDetailsService.save(registerAccountDTO);
-            RegisterResponseDTO response = new RegisterResponseDTO(savedAccount, "Registration was successful");
+
+            RegisterResponseDTO response = RegisterResponseDTO.builder()
+                    .id(savedAccount.getId())
+                    .email(savedAccount.getEmail())
+                    .role(savedAccount.getRole())
+                    .message("Registration was successful")
+                    .build();
+
             log.info("Registration was successful for email: " + response.getEmail());
 
             return ResponseEntity

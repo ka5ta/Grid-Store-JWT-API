@@ -44,8 +44,7 @@ class AuthenticationServiceTest {
         // given
         when(authenticationManagerMock.authenticate(any())).thenReturn(token);
 
-        // when
-        // then
+        // when & then
         assertDoesNotThrow(() -> authenticationService.authenticate(request));
     }
 
@@ -55,8 +54,7 @@ class AuthenticationServiceTest {
         // given
         when(authenticationManagerMock.authenticate(any())).thenThrow(AccessDeniedException.class);
 
-        // when
-        // then
+        // when & then
         assertThrows(AccessDeniedException.class, () -> authenticationService.authenticate(request));
     }
 
@@ -66,8 +64,7 @@ class AuthenticationServiceTest {
         // given
         when(authenticationManagerMock.authenticate(any())).thenThrow(BadCredentialsException.class);
 
-        // when
-        // then
+        // when & then
         assertThrows(BadCredentialsException.class, () -> authenticationService.authenticate(request));
     }
 }

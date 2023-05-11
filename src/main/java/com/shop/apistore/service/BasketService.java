@@ -1,5 +1,7 @@
 package com.shop.apistore.service;
 
+import com.shop.apistore.error.NoSuchProductException;
+import com.shop.apistore.error.NotEnoughQuantity;
 import com.shop.apistore.model.Account;
 import com.shop.apistore.model.Basket;
 import com.shop.apistore.model.Product;
@@ -8,8 +10,9 @@ import com.shop.apistore.repository.BasketRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.naming.InsufficientResourcesException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -25,36 +28,31 @@ public class BasketService {
         return basket.getProductsInBasket();
     }
 
-    public Basket addProductToBasket(Long productId, String email) throws InsufficientResourcesException {
+    public Basket addProductToBasket(Long productId, String email) throws NotEnoughQuantity, NoSuchProductException {
         Basket basket = getBasket(email);
 
-        try {
-            Product productById = productService.isProductAvailable(productId);
-            addProduct(basket, productById);
-            return saveBasket(basket);
-
-        } catch (NoSuchElementException e) {
-            throw new NoSuchElementException("Product with id: " + productId + ", do not exists.");
-        }
+        Product productById = productService.getProduct(productId);
+        addProduct(basket, productById);
+        return saveBasket(basket);
     }
 
-    private Basket addProduct(Basket basket, Product product) throws InsufficientResourcesException {
+    private Basket addProduct(Basket basket, Product product) throws NotEnoughQuantity {
 
         try {
-            return updateProductQuantityInBasket(basket, product);
+            return incrementProductQuantityInBasket(basket, product);
 
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchProductException e) {
             ProductInBasket newProductToBasket = new ProductInBasket(product, 1);
             basket.getProductsInBasket().add(newProductToBasket);
             return basket;
         }
     }
 
-    private Basket updateProductQuantityInBasket(Basket basket, Product product) throws InsufficientResourcesException {
+    private Basket incrementProductQuantityInBasket(Basket basket, Product product) throws NotEnoughQuantity, NoSuchProductException {
         ProductInBasket productInBasketToUpdate = findProductInBasket(basket, product);
 
         if (product.getStock() <= productInBasketToUpdate.getQuantityInBasket()) {
-            throw new InsufficientResourcesException("Not enough product quantity in stock");
+            throw new NotEnoughQuantity("Not enough product quantity in stock");
         }
 
         // increase quantity by 1
@@ -65,16 +63,16 @@ public class BasketService {
     }
 
 
-    private ProductInBasket findProductInBasket(Basket basket, Product product) {
+    private ProductInBasket findProductInBasket(Basket basket, Product product) throws NoSuchProductException {
         Set<ProductInBasket> productsInBasket = basket.getProductsInBasket();
 
         return productsInBasket.stream()
                 .filter(pib -> pib.getProduct().equals(product))
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("There is no such product in basket"));
+                .orElseThrow(() -> new NoSuchProductException("There is no such product in basket"));
     }
 
-    public Basket removeProductFromBasket(Long productId, String email) {
+    public Basket removeProductFromBasket(Long productId, String email) throws NoSuchProductException {
         Basket basket = getBasket(email);
         Product product = productService.getProductById(productId);
 
@@ -82,17 +80,17 @@ public class BasketService {
         return saveBasket(basket);
     }
 
-    private void removeProduct(Basket basket, Product product) {
+    private void removeProduct(Basket basket, Product product) throws NoSuchProductException {
         ProductInBasket productInBasketToRemove = findProductInBasket(basket, product);
 
         basket.getProductsInBasket().remove(productInBasketToRemove);
     }
 
-    public Basket modifyProductInBasket(Long productId, int newQuantity, String email) throws InsufficientResourcesException {
+    public Basket modifyProductInBasket(Long productId, int newQuantity, String email) throws NoSuchProductException, NotEnoughQuantity {
         Basket basket = getBasket(email);
         Product product = productService.getProductById(productId);
 
-        Basket updatedBasket = updateProductQuantityInBasket(basket, product, newQuantity);
+        Basket updatedBasket = setProductQuantityInBasket(basket, product, newQuantity);
 
         return saveBasket(updatedBasket);
     }
@@ -101,12 +99,12 @@ public class BasketService {
         return basketRepository.save(basket);
     }
 
-    private Basket updateProductQuantityInBasket(Basket basket, Product product, int newQuantity) throws InsufficientResourcesException {
+    private Basket setProductQuantityInBasket(Basket basket, Product product, int newQuantity) throws NotEnoughQuantity, NoSuchProductException {
 
         ProductInBasket productInBasketToUpdate = findProductInBasket(basket, product);
 
         if (product.getStock() < newQuantity) {
-            throw new InsufficientResourcesException("Not enough product quantity in stock");
+            throw new NotEnoughQuantity("Not enough product quantity in stock");
         } else if (newQuantity == 0) {
             removeProduct(basket, product);
             return basket;

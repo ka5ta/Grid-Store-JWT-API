@@ -1,14 +1,12 @@
 package com.shop.apistore.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Table(name="Orders")
 public class Order {
 

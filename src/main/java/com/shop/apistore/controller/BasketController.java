@@ -2,22 +2,19 @@ package com.shop.apistore.controller;
 
 import com.shop.apistore.dto.BasketDTO;
 import com.shop.apistore.dto.ErrorResponse;
-
+import com.shop.apistore.error.NoSuchProductException;
+import com.shop.apistore.error.NotEnoughQuantity;
 import com.shop.apistore.model.Basket;
-
 import com.shop.apistore.model.ProductInBasket;
 import com.shop.apistore.service.BasketService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.InsufficientResourcesException;
 import java.security.Principal;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -41,7 +38,10 @@ public class BasketController {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(new BasketDTO(allProductsFromBasket, subtotal));
+                    .body(BasketDTO.builder()
+                            .sortedProductsInBasket(allProductsFromBasket)
+                            .subtotal(subtotal)
+                            .build());
 
         } catch (UsernameNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -63,7 +63,7 @@ public class BasketController {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(basket);
 
-        } catch (NoSuchElementException | InsufficientResourcesException e) {
+        } catch (NoSuchProductException | NotEnoughQuantity e) {
             return ResponseEntity
                     .status(HttpStatus.UNPROCESSABLE_ENTITY)
                     .contentType(MediaType.APPLICATION_JSON)
@@ -81,7 +81,7 @@ public class BasketController {
                     .status(HttpStatus.OK)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(basket);
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchProductException e) {
             return ResponseEntity
                     .status(HttpStatus.UNPROCESSABLE_ENTITY)
                     .contentType(MediaType.APPLICATION_JSON)
@@ -100,7 +100,7 @@ public class BasketController {
                     .status(HttpStatus.OK)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(basket);
-        } catch (NoSuchElementException | InsufficientResourcesException e) {
+        } catch (NoSuchProductException | NotEnoughQuantity e) {
             return ResponseEntity
                     .status(HttpStatus.UNPROCESSABLE_ENTITY)
                     .contentType(MediaType.APPLICATION_JSON)

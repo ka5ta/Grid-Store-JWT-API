@@ -1,5 +1,7 @@
 package com.shop.apistore.service;
 
+import com.shop.apistore.error.NoSuchProductException;
+import com.shop.apistore.error.NotEnoughQuantity;
 import com.shop.apistore.model.Account;
 import com.shop.apistore.model.Basket;
 import com.shop.apistore.model.Product;
@@ -14,12 +16,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.naming.InsufficientResourcesException;
 import java.util.HashSet;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -130,7 +129,7 @@ class BasketServiceTest {
         void addProductToBasketSuccessfulTest() {
 
             // given
-            when(productServiceMock.isProductAvailable(3L)).thenReturn(railgun);
+            when(productServiceMock.getProduct(3L)).thenReturn(railgun);
             when(basketRepositoryMock.save(basket)).thenReturn(basket);
 
             // when
@@ -155,7 +154,7 @@ class BasketServiceTest {
         void addExistingProductToBasketChangesQuantityTest() {
 
             // given
-            when(productServiceMock.isProductAvailable(1L)).thenReturn(nailgun);
+            when(productServiceMock.getProduct(1L)).thenReturn(nailgun);
             when(basketRepositoryMock.save(basket)).thenReturn(basket);
 
 
@@ -179,16 +178,16 @@ class BasketServiceTest {
         void addExistingProductToBasketExceedQuantityTest() {
 
             // given
-            when(productServiceMock.isProductAvailable(1L)).thenReturn(nailgun);
+            when(productServiceMock.getProduct(1L)).thenReturn(nailgun);
             when(basketRepositoryMock.save(basket)).thenReturn(basket);
 
 
             // when
             assertDoesNotThrow(() -> basketService.addProductToBasket(1L, email));
-            InsufficientResourcesException insufficientResourcesException = assertThrows(InsufficientResourcesException.class, () -> basketService.addProductToBasket(1L, email));
+            NotEnoughQuantity notEnoughQuantityException = assertThrows(NotEnoughQuantity.class, () -> basketService.addProductToBasket(1L, email));
 
             // then
-            assertThat(insufficientResourcesException.getMessage()).isEqualTo("Not enough product quantity in stock");
+            assertThat(notEnoughQuantityException.getMessage()).isEqualTo("Not enough product quantity in stock");
         }
 
         @Test
@@ -197,15 +196,11 @@ class BasketServiceTest {
         void addNewProductToBasketUnsuccessfulTest() {
 
             // given
-            when(productServiceMock.isProductAvailable(3L)).thenThrow(NoSuchElementException.class);
+            when(productServiceMock.getProduct(10L)).thenThrow(NoSuchProductException.class);
 
 
-            // when
-            NoSuchElementException noSuchElementException = assertThrows(NoSuchElementException.class, () -> basketService.addProductToBasket(3L, email));
-
-            // then
-            assertThat(noSuchElementException.getMessage()).isEqualTo("Product with id: " + 3L + ", do not exists.");
-
+            // when & then
+            assertThrows(NoSuchProductException.class, () -> basketService.addProductToBasket(10L, email));
         }
     }
 
@@ -243,10 +238,10 @@ class BasketServiceTest {
             when(productServiceMock.getProductById(3L)).thenReturn(railgun);
 
             // when
-            NoSuchElementException noSuchElementException = assertThrows(NoSuchElementException.class, () -> basketService.removeProductFromBasket(3L, email));
+            NoSuchProductException noSuchProductException = assertThrows(NoSuchProductException.class, () -> basketService.removeProductFromBasket(3L, email));
 
             // then
-            assertThat(noSuchElementException.getMessage()).isEqualTo("There is no such product in basket");
+            assertThat(noSuchProductException.getMessage()).isEqualTo("There is no such product in basket");
         }
     }
 
@@ -307,11 +302,11 @@ class BasketServiceTest {
             when(productServiceMock.getProductById(2L)).thenReturn(rocket);
 
             // when
-            InsufficientResourcesException insufficientResourcesException = assertThrows(InsufficientResourcesException.class,
+            NotEnoughQuantity notEnoughQuantity = assertThrows(NotEnoughQuantity.class,
                     () -> basketService.modifyProductInBasket(2L, 20, email));
 
             // then
-            assertThat(insufficientResourcesException.getMessage()).isEqualTo("Not enough product quantity in stock");
+            assertThat(notEnoughQuantity.getMessage()).isEqualTo("Not enough product quantity in stock");
         }
     }
 

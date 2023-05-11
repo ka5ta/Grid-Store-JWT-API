@@ -1,18 +1,14 @@
 package com.shop.apistore.dto;
 
-import java.io.Serial;
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-public class JwtAuthResponse implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-    private final String jwttoken;
+@Getter
+@RequiredArgsConstructor
+public class JwtAuthResponse {
 
-    public JwtAuthResponse(String jwttoken) {
-        this.jwttoken = jwttoken;
-    }
+    @JsonProperty("token")
+    private final String jwtToken;
 
-    public String getToken() {
-        return this.jwttoken;
-    }
 }

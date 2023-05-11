@@ -9,6 +9,7 @@ import com.shop.apistore.model.Account;
 import com.shop.apistore.model.JwtUserDetails;
 import com.shop.apistore.service.JwtUserDetailsService;
 import com.shop.apistore.utils.JwtTokenUtil;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -85,7 +86,8 @@ class AuthControllerTest {
         @Test
         @DisplayName("Anonymous register success")
         @WithAnonymousUser
-        void anonymousCanRegisterTest() throws Exception {
+        @SneakyThrows
+        void anonymousCanRegisterTest() {
 
             // given
             when(jwtUserDetailsServiceMock.save(any(RegisterAccountDTO.class))).thenReturn(USER_ACCOUNT_1_OUTPUT);
@@ -106,7 +108,8 @@ class AuthControllerTest {
 
         @Test
         @DisplayName("Throw if email already registered Test")
-        void emailAlreadyRegisteredThrowTest() throws Exception {
+        @SneakyThrows
+        void emailAlreadyRegisteredThrowTest() {
 
             // given
             when(jwtUserDetailsServiceMock.save(any(RegisterAccountDTO.class)))
@@ -136,7 +139,8 @@ class AuthControllerTest {
         @Test
         @DisplayName("User gets Authentication Token Success test")
         @WithMockUser(username = "user@email.com")
-        void existentUserCanGetTokenAndAuthenticationTest() throws Exception {
+        @SneakyThrows
+        void existingUserCanGetTokenAndAuthenticationTest() {
 
             // given
             when(jwtUserDetailsServiceMock.loadUserByUsername(JWT_USER_AUTH_REQUEST_1.getEmail()))
@@ -159,7 +163,8 @@ class AuthControllerTest {
         @Test
         @DisplayName("Anonymous not allowed for Authentication Token Failure")
         @WithAnonymousUser
-        void anonymousNotAllowedToGetTokenTest() throws Exception {
+        @SneakyThrows
+        void anonymousNotAllowedToGetTokenTest() {
 
             // given
             doThrow(UsernameNotFoundException.class).when(jwtUserDetailsServiceMock).validatePassword(any(JwtAuthRequest.class));
@@ -185,7 +190,8 @@ class AuthControllerTest {
         @Test
         @WithAnonymousUser
         @DisplayName("Anonymous not allowed to access User site Test")
-        void anonymousNotAllowedToAccessUserSiteTest() throws Exception {
+        @SneakyThrows
+        void anonymousNotAllowedToAccessUserSiteTest() {
 
             // when
             mockMvc.perform(MockMvcRequestBuilders.get(RESTRICTED_SITE_USER)).
@@ -202,7 +208,8 @@ class AuthControllerTest {
         @Test
         @WithAnonymousUser
         @DisplayName("Anonymous not allowed to access Admin Site Test")
-        void anonymousNotAllowedToAccessAdminSiteTest() throws Exception {
+        @SneakyThrows
+        void anonymousNotAllowedToAccessAdminSiteTest() {
 
             // when
             mockMvc.perform(MockMvcRequestBuilders
@@ -219,7 +226,8 @@ class AuthControllerTest {
         @Test
         @WithMockUser(username = "user@email.com")
         @DisplayName("User not allowed to access Admin Site Test")
-        void userNotAllowedToAccessAdminSiteTest() throws Exception {
+        @SneakyThrows
+        void userNotAllowedToAccessAdminSiteTest() {
 
             // when
             mockMvc.perform(MockMvcRequestBuilders
@@ -237,7 +245,8 @@ class AuthControllerTest {
         @Test
         @WithMockUser(username = "user@email.com")
         @DisplayName("User allowed to access User Site Test")
-        void userAllowedToAccessUserSiteTest() throws Exception {
+        @SneakyThrows
+        void userAllowedToAccessUserSiteTest() {
 
             // when
             mockMvc.perform(MockMvcRequestBuilders
@@ -255,7 +264,8 @@ class AuthControllerTest {
         @Test
         @WithMockUser(username = "admin@email.com", roles = {"USER", "ADMIN"})
         @DisplayName("Admin allowed to access User Site Test")
-        void adminAllowedToAccessUserSiteTest() throws Exception {
+        @SneakyThrows
+        void adminAllowedToAccessUserSiteTest() {
 
             // when
             mockMvc.perform(MockMvcRequestBuilders
@@ -273,7 +283,8 @@ class AuthControllerTest {
         @Test
         @WithMockUser(username = "admin@email.com", roles = {"USER", "ADMIN"})
         @DisplayName("Admin allowed to access Admin Site Test")
-        void adminAllowedToAccessAdminSiteTest() throws Exception {
+        @SneakyThrows
+        void adminAllowedToAccessAdminSiteTest() {
 
             // when
             mockMvc.perform(MockMvcRequestBuilders

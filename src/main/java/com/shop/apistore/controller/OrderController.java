@@ -2,6 +2,7 @@ package com.shop.apistore.controller;
 
 import com.shop.apistore.dto.BasketDTO;
 import com.shop.apistore.dto.ErrorResponse;
+import com.shop.apistore.error.NotEnoughQuantity;
 import com.shop.apistore.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.naming.InsufficientResourcesException;
 import java.security.Principal;
 
 @Controller
@@ -31,7 +31,7 @@ public class OrderController {
                     .status(HttpStatus.CREATED)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(basketDTO);
-        } catch (InsufficientResourcesException e){
+        } catch (NotEnoughQuantity e){
             return ResponseEntity
                     .status(HttpStatus.UNPROCESSABLE_ENTITY)
                     .contentType(MediaType.APPLICATION_JSON)

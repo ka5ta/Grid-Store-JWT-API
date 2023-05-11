@@ -5,7 +5,7 @@ import com.shop.apistore.dto.ErrorResponse;
 import com.shop.apistore.dto.SuccessResponseDTO;
 import com.shop.apistore.model.Account;
 import com.shop.apistore.service.AccountService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RequestMapping("/shop/api/account")
 public class AccountController {
 
