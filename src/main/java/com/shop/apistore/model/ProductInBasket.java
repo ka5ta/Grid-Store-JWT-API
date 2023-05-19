@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class ProductInBasket {
+public class ProductInBasket implements Comparable<ProductInBasket>{
 
     @Id
     @GeneratedValue
@@ -26,5 +26,19 @@ public class ProductInBasket {
     public ProductInBasket(Product product, int quantity) {
         this.product = product;
         this.quantityInBasket = quantity;
+    }
+
+    @Override
+    public int compareTo(ProductInBasket pib) {
+
+        String thisProductBrand = this.product.getBrand();
+        String otherProductBrand = pib.getProduct().getBrand();
+
+        if (thisProductBrand.compareTo(otherProductBrand) > 0) {
+            return 1;
+        } else if (thisProductBrand.compareTo(otherProductBrand) < 0) {
+            return -1;
+        }
+        return 0;
     }
 }
