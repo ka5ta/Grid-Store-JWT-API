@@ -10,6 +10,6 @@ import java.util.Set;
 @Builder
 public class BasketDTO {
 
-    private Set<ProductInBasket> sortedProductsInBasket;
+    private Set<ProductInBasket> productsInBasket;
     private double subtotal;
 }

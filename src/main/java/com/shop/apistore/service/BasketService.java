@@ -7,12 +7,14 @@ import com.shop.apistore.model.Basket;
 import com.shop.apistore.model.Product;
 import com.shop.apistore.model.ProductInBasket;
 import com.shop.apistore.repository.BasketRepository;
+import com.shop.apistore.utils.CustomComparatorProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Service
 @RequiredArgsConstructor
@@ -23,9 +25,14 @@ public class BasketService {
 
     private final ProductService productService;
 
-    public Set<ProductInBasket> getAllProductsFromBasket(String email) {
+    public Set<ProductInBasket> getSortedProductsFromBasket(String email) {
         Basket basket = getBasket(email);
-        return basket.getProductsInBasket();
+        Set<ProductInBasket> productsInBasket = basket.getProductsInBasket();
+
+        TreeSet<ProductInBasket> sortedProductsInBasket = new TreeSet<>(new CustomComparatorProduct());
+        sortedProductsInBasket.addAll(productsInBasket);
+
+        return sortedProductsInBasket;
     }
 
     public Basket addProductToBasket(Long productId, String email) throws NotEnoughQuantity, NoSuchProductException {

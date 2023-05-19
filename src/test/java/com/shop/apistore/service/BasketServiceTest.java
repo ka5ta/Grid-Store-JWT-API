@@ -100,7 +100,7 @@ class BasketServiceTest {
     void getAllProductsFromBasketSuccessfulTest() {
 
         // when
-        Set<ProductInBasket> allProductsFromBasket = basketService.getAllProductsFromBasket(email);
+        Set<ProductInBasket> allProductsFromBasket = basketService.getSortedProductsFromBasket(email);
 
         System.out.println(allProductsFromBasket);
 

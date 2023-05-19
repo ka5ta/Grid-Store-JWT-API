@@ -1,12 +1,14 @@
 package com.shop.apistore.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @Table(name = "products")
+@NoArgsConstructor
 public class Product {
 
     @Id

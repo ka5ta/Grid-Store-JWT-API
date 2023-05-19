@@ -31,15 +31,16 @@ public class BasketController {
     public ResponseEntity<Object> getAllSortedProductsInBasket(Principal principal) {
         try {
             String email = principal.getName();
-            Set<ProductInBasket> allProductsFromBasket = basketService.getAllProductsFromBasket(email);
+            Set<ProductInBasket> sortedProductsInBasket = basketService.getSortedProductsFromBasket(email);
 
-            double subtotal = basketService.countSubtotal(allProductsFromBasket);
+
+            double subtotal = basketService.countSubtotal(sortedProductsInBasket);
 
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(BasketDTO.builder()
-                            .sortedProductsInBasket(allProductsFromBasket)
+                            .productsInBasket(sortedProductsInBasket)
                             .subtotal(subtotal)
                             .build());
 

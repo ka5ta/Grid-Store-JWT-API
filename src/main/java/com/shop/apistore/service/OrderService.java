@@ -41,7 +41,7 @@ public class OrderService {
 
         double subtotal = basketService.countSubtotal(productsInBasket);
         return BasketDTO.builder()
-                .sortedProductsInBasket(productsInBasket)
+                .productsInBasket(productsInBasket)
                 .subtotal(subtotal)
                 .build();
     }
