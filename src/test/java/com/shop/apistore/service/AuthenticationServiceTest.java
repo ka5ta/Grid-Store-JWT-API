@@ -1,6 +1,6 @@
 package com.shop.apistore.service;
 
-import com.shop.apistore.dto.JwtAuthRequest;
+import com.shop.apistore.dto.JwtAuthRequestDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class AuthenticationServiceTest {
     private AuthenticationService authenticationService;
 
     private UsernamePasswordAuthenticationToken token;
-    private JwtAuthRequest request;
+    private JwtAuthRequestDTO request;
 
     @BeforeEach
     void setup() {
@@ -35,7 +35,7 @@ class AuthenticationServiceTest {
         String password = "password";
         authenticationService = new AuthenticationService(authenticationManagerMock);
         token = new UsernamePasswordAuthenticationToken(email, password);
-        request = new JwtAuthRequest(email, password);
+        request = new JwtAuthRequestDTO(email, password);
     }
 
     @Test

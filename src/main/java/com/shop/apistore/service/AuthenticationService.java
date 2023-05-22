@@ -1,6 +1,6 @@
 package com.shop.apistore.service;
 
-import com.shop.apistore.dto.JwtAuthRequest;
+import com.shop.apistore.dto.JwtAuthRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
@@ -17,7 +17,7 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
-    public void authenticate(JwtAuthRequest authRequest) {
+    public void authenticate(JwtAuthRequestDTO authRequest) {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));

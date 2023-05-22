@@ -1,6 +1,6 @@
 package com.shop.apistore.service;
 
-import com.shop.apistore.dto.JwtAuthRequest;
+import com.shop.apistore.dto.JwtAuthRequestDTO;
 import com.shop.apistore.dto.RegisterAccountDTO;
 import com.shop.apistore.model.Account;
 import com.shop.apistore.model.JwtUserDetails;
@@ -30,7 +30,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         return accountService.save(account);
     }
 
-    public void validatePassword(JwtAuthRequest authenticationRequest){
+    public void validatePassword(JwtAuthRequestDTO authenticationRequest){
         UserDetails userDetails = loadUserByUsername(authenticationRequest.getEmail());
         accountService.comparePasswords(authenticationRequest.getPassword(), userDetails.getPassword());
     }

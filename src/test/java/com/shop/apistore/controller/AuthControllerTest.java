@@ -3,7 +3,7 @@ package com.shop.apistore.controller;
 import com.google.gson.Gson;
 import com.shop.apistore.config.CustomPasswordEncoderConfig;
 import com.shop.apistore.constraint.Role;
-import com.shop.apistore.dto.JwtAuthRequest;
+import com.shop.apistore.dto.JwtAuthRequestDTO;
 import com.shop.apistore.dto.RegisterAccountDTO;
 import com.shop.apistore.model.Account;
 import com.shop.apistore.model.JwtUserDetails;
@@ -132,7 +132,7 @@ class AuthControllerTest {
     class generateTokenAuthenticationTest {
 
         // given
-        private final JwtAuthRequest JWT_USER_AUTH_REQUEST_1 = new JwtAuthRequest("user@email.com", "123456");
+        private final JwtAuthRequestDTO JWT_USER_AUTH_REQUEST_1 = new JwtAuthRequestDTO("user@email.com", "123456");
         private final UserDetails USER_DETAILS_1 = new JwtUserDetails(USER_ACCOUNT_1_OUTPUT);
         String jsonString = gson.toJson(JWT_USER_AUTH_REQUEST_1);
 
@@ -167,7 +167,7 @@ class AuthControllerTest {
         void anonymousNotAllowedToGetTokenTest() {
 
             // given
-            doThrow(UsernameNotFoundException.class).when(jwtUserDetailsServiceMock).validatePassword(any(JwtAuthRequest.class));
+            doThrow(UsernameNotFoundException.class).when(jwtUserDetailsServiceMock).validatePassword(any(JwtAuthRequestDTO.class));
 
 
             // when

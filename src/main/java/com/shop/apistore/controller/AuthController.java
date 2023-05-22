@@ -54,14 +54,14 @@ public class AuthController {
     }
 
     @PostMapping(value = "/auth")
-    public ResponseEntity<Object> createAuthenticationToken(@RequestBody JwtAuthRequest authenticationRequest) {
+    public ResponseEntity<Object> createAuthenticationToken(@RequestBody JwtAuthRequestDTO jwtAuthRequestDTO) {
 
         try {
-            jwtUserDetailsService.validatePassword(authenticationRequest);
-            final String token = jwtTokenUtil.generateToken(authenticationRequest.getEmail());
+            jwtUserDetailsService.validatePassword(jwtAuthRequestDTO);
+            final String token = jwtTokenUtil.generateToken(jwtAuthRequestDTO.getEmail());
             log.info("token was generated: " + token);
 
-            return ResponseEntity.ok(new JwtAuthResponse(token));
+            return ResponseEntity.ok(new JwtAuthResponseDTO(token));
 
         } catch (BadCredentialsException | UsernameNotFoundException e) {
             return ResponseEntity

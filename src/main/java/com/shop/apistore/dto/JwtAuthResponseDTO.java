@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class JwtAuthResponse {
+public class JwtAuthResponseDTO {
 
     @JsonProperty("token")
     private final String jwtToken;
